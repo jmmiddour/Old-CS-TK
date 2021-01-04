@@ -30,6 +30,12 @@ x = input("Enter comma-separated numbers: ").split(',')
 # What do you need between the square brackets to make it work?
 # y = [x[:len(x) + 1:2]]  # This is a way to step using slicing
 #      ^-- will print every other index value starting with the first number
+
+# Using a for loop and if statement
+# for num in x:
+#     if num % 2 == 0:
+#         print(num)
+
 y = [i for i in x if int(i) %2 == 0]
 print(y)
 
@@ -49,6 +55,7 @@ y = input("Enter numbers:")
 # for letter in y:
 #     num = int(letter)
 #     c.append(num)
+
 
 # Using list comprehension
 c = [int(letter) for letter in y]

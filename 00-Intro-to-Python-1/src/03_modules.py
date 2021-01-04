@@ -12,7 +12,9 @@ import sys
 # YOUR CODE HERE
 # Java Script:
 #   for(let i = 0; i < sys.argv.length; i++)
-#   {console.log(sys.argv[i]);}
+#   {
+#       console.log(sys.argv[i]);
+#   }
 
 for i in sys.argv:
     print(i)

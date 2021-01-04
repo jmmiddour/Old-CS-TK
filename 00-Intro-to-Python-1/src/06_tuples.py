@@ -11,11 +11,14 @@ never needs to be mutated, use a tuple instead of a list.
 Additionally, your code will be safer if you opt to "write-protect"
 data that does not need to be changed. Tuples enforce immutability
 automatically.
+
+Immutable means it can not be change
 """
 
 # Example:
 
 import math
+
 
 def dist(a, b):
     """Compute the distance between two x,y points."""
@@ -24,14 +27,14 @@ def dist(a, b):
     # y0 = a[1]
     x1, y1 = b
 
-    return math.sqrt((x1 - x0)**2 + (y1 - y0)**2)
+    return math.sqrt((x1 - x0) ** 2 + (y1 - y0) ** 2)
 
-a = (2, 7)   # <-- x,y coordinates stored in tuples
+
+a = (2, 7)  # <-- x,y coordinates stored in tuples
 b = (-14, 72)
 
 # Prints "Distance is 66.94"
 print("Distance is: {:.2f}".format(dist(a, b)))
-
 
 
 # Write a function `print_tuple` that prints all the values in a tuple
@@ -41,6 +44,7 @@ def print_tuple(tup):
     for num in tup:
         print(num)
 
+
 t = (1, 2, 5, 7, 99)
 print_tuple(t)  # Prints 1 2 5 7 99, one per line
 
@@ -48,4 +52,4 @@ print_tuple(t)  # Prints 1 2 5 7 99, one per line
 u = (1,)  # What needs to be added to make this work?
 # If you add a , it tells python this is a tuple 
 #   even if there is only one value.
-print_tuple(u) 
+print_tuple(u)
