@@ -1,8 +1,8 @@
 """
 Python tuples are sort of like lists, except they're immutable and
-are usually used to hold heterogenous data, as opposed to lists
-which are typically used to hold homogenous data. Tuples use
-parens instead of square brackets.
+are usually used to hold heterogenous (multiple data types) data,
+as opposed to lists which are typically used to hold homogenous (single
+data type) data. Tuples use parens instead of square brackets.
 
 More specifically, tuples are faster than lists. If you're looking
 to just define a constant set of values and that set of values

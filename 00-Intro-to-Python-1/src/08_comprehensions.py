@@ -8,9 +8,14 @@ Take a look at https://docs.python.org/3/tutorial/datastructures.html#list-compr
 for more info regarding list comprehensions.
 """
 
-# Write a list comprehension to produce the array [1, 2, 3, 4, 5]
+# Write a list comprehension to produce the list [1, 2, 3, 4, 5]
+# Only use list comprehension to create a new list (need to assign a
+#   new variable to the list comprehension)
 y = [num for num in range(1, 6)]
 print (y)
+
+for num in range(1, 6):
+    print([num])
 
 # Write a list comprehension to produce the cubes of the numbers 0-9:
 # [0, 1, 8, 27, 64, 125, 216, 343, 512, 729]

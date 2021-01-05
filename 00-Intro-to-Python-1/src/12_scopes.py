@@ -4,10 +4,12 @@
 # When you use a variable in a function, it's local in scope to the function.
 x = 12
 
+
 def change_x():
-    global x  # 
+    global x  # makes x a global variable so you can change the value outside the scope
     x = 99
     print(x)
+
 
 change_x()
 
