@@ -1,6 +1,6 @@
 # Print "Hello, world!" to your terminal
 
-# --> Java Script:
+# --> JavaScript:
 # console.log("Hello, world!");
 
 # --> Python:

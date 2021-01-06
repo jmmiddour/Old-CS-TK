@@ -1,6 +1,6 @@
 """
 Python tuples are sort of like lists, except they're immutable and
-are usually used to hold heterogenous (multiple data types) data,
+are usually used to hold heterogeneous (multiple data types) data,
 as opposed to lists which are typically used to hold homogenous (single
 data type) data. Tuples use parens instead of square brackets.
 
@@ -38,8 +38,6 @@ print("Distance is: {:.2f}".format(dist(a, b)))
 
 
 # Write a function `print_tuple` that prints all the values in a tuple
-
-# YOUR CODE HERE
 def print_tuple(tup):
     for num in tup:
         print(num)

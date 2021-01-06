@@ -12,15 +12,16 @@ x = 5
 y = "7"
 
 # Write a print statement that combines x + y into the integer value 12
-# YOUR CODE HERE
-y = int(y)
-print(y + x)
+# y = int(y)
+# print(y + x)
 
 # Another way that is cleaner
 print(int(y) + x)
 
 # Write a print statement that combines x + y into the string value 57
-# YOUR CODE HERE
-x = str(x)
+# x = str(x)
+# y = str(y)
+# print(x + y)
 
+# Another way that is cleaner
 print(str(x) + str(y))
