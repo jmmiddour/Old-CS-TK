@@ -61,6 +61,7 @@ player = Player(player_name, room['outside'])
 #
 # If the user enters "q", quit the game.
 
+
 # Define a function to handle the direction changes
 def room_logic(direction):
     # Check if player input is n, s, e, or w
@@ -83,6 +84,7 @@ def room_logic(direction):
     else: 
         print(f'\nInvalid input, going back to the {player.current_room.name}.')
 
+
 # Define a function for the inventory items
 def inv_items(take_item):
     # If the player wants to take the item
@@ -96,7 +98,7 @@ def inv_items(take_item):
 
         # If the player chooses to remove item from inventory
         if drop_item.lower() == 'y':
-            item_to_drop = str(input(f'\nWhat would you like to remove from your inventory? '))
+            item_to_drop = input(f'\nWhat would you like to remove from your inventory? ').capitalize()
             player.rem_item(item_to_drop)
             print(f'  * This is your inventory now:\n{player.inventory}')
 
@@ -104,6 +106,7 @@ def inv_items(take_item):
     else:
         print(f'\nYou are leaving {player.current_room.inventory.name} behind.')
         print(f'  * This is your current inventory:\n{player.inventory}')
+
 
 # Create an empty variable to hold the player input
 player_input = ''
