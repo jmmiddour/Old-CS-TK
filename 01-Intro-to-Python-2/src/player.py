@@ -14,7 +14,7 @@ class Player:
     def grab(self, item):
         self.inventory.append(item.name)
         print(f'\nYou now have the {item.name} in your inventory.')
-        print(f'  * Your current inventory: {self.inventory}')
+        print(f'  * Your current inventory:\n    {self.inventory}')
 
     def rem_item(self, item):
         self.inventory.remove(item)
