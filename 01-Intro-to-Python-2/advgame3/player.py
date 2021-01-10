@@ -9,12 +9,8 @@ class Player:
         self.curr_room = curr_room
         self.inventory = inventory
 
-    def __repr__(self):
-        return f'{self.inventory}'
-
     def remove_item(self, item):
         self.inventory.remove(item)
 
     def add_item(self, item):
         self.inventory.append(item)
-        print(f'You have picked up the {item}')
