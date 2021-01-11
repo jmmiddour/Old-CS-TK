@@ -49,7 +49,7 @@ return elements in Last In First Out order.
 
 # import os
 # import sys
-# sys.path.append(os.path.join(os.path.dirname(sys.path[0]), 'singly_linked_list'))
+sys.path.append(os.path.join(os.path.dirname(sys.path[0]), 'singly_linked_list'))
 from singly_linked_list import LinkedList
 
 

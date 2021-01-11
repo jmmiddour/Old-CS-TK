@@ -61,6 +61,7 @@ class LinkedList:
         if self.head.next is None:  # Check if the head is pointing to anything, if None...
             self.head = None  # These is only one value (the head) so head is now None.
             self.tail = None  # There is no tail, because head and tail are the same value.
+            return data  # Returns the value of the original tail for later use.
 
         # Iterates through the list until it finds the tail by moving to the next node's pointer, looking for None.
         while cursor.next.next is not None:
@@ -71,9 +72,10 @@ class LinkedList:
         return data  # Returns the original tail's value to reuse.
 
 
-x = Node(15)
-print(x)  # Prints just the memory location of the node.
+# x = Node(15)  # Run test on code
 
-print(x.value)  # Prints the value of the node.
+# print(x)  # Prints just the memory location of the node.
+
+# print(x.value)  # Prints the value of the node.
 
 # print(x.next.value)  # Prints the next value if there is one. Will throw error if value is None
