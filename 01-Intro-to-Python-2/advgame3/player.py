@@ -10,7 +10,10 @@ class Player:
         self.inventory = inventory
 
     def remove_item(self, item):
-        self.inventory.remove(item)
+        self.inventory.pop(item)
 
     def add_item(self, item):
         self.inventory.append(item)
+
+    def __repr__(self):
+        return f'{self.inventory}'

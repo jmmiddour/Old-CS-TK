@@ -5,20 +5,17 @@ from loot import Loot
 
 # Declare all the loot in the game
 loot = {
-    'knife': Loot('Mac the Knife', 'A rusty blade.'),
-    'flagon': Loot('Magnificent Drinking Vessel',
-                   'Alas, it appears to be empty.'),
-    'gold': Loot('The One Piece', 'Mysterious pirate gold.'),
-    'staff': Loot('The Staff of Egypt',
-                  'A beautiful work of art, this wooden staff has a carving of Anubis at the top.'),
-    'lumens': Loot('Bioluminescence',
-                   'The reflection of shiny faces.'),
-    'bomb': Loot('Remote Bomb', 'Can be activated two at a time.'),
-    'plant': Loot('Strange Leafy Green Plant',
-                  'Perhaps it can be smoked?'),
-    'food': Loot('Gluten-Free', 'Too bad, it is just granola.'),
-    'potion': Loot('Healing Potion', 'This potion will restore your health to 100%.'),
-    'amulet': Loot('Amulet of Kvasir', 'Dodge oncoming enemies.'),
+    'knife': Loot('Mac The Knife', '  A rusty blade.'),
+    'flagon': Loot('Magnificent Drinking Vessel', '  Alas, it appears to be empty.'),
+    'gold': Loot('The One Piece', '  Mysterious pirate gold.'),
+    'staff': Loot('The Staff Of Egypt',
+                  '  A beautiful work of art, this wooden staff has a carving of Anubis at the top.'),
+    'lumens': Loot('Bioluminescence', '  The reflection of shiny faces.'),
+    'bomb': Loot('Remote Bomb', '  Can be activated two at a time.'),
+    'plant': Loot('Strange Leafy Green Plant', '  Perhaps it can be smoked?'),
+    'food': Loot('Gluten Free', '  Too bad, it is just granola.'),
+    'potion': Loot('Healing Potion', '  This potion will restore your health to 100%.'),
+    'amulet': Loot('Amulet Of Kvasir', '  Dodge oncoming enemies.'),
 }
 
 # Declare all the rooms in the game
@@ -77,7 +74,7 @@ print(f'''
 # # * Waits for user input and decides what to do.
 while movement != 'q':
 
-    print(f'{name} has arrived at the {player.curr_room.name}.\n{player.curr_room.description}\n')
+    print(f'{player.name} has arrived at the {player.curr_room.name}.\n{player.curr_room.description}\n')
 
     if current_room == player.curr_room:
         pass
@@ -105,11 +102,11 @@ Go North (n), Go South (s), Go East (e), Go West (w), Action (a) or Quit (q): ''
             current_room = current_room.w_to
 
         elif movement.lower() == 'a':
-            look_drop = input('\nWhat would you like to do? look around (l) or drop an item (d): ')
+            look_drop = input('\nWhat would you like to do?\n  look around (l) or drop an item (d): ')
 
             if look_drop.lower() == 'l':
-                print(f"""{name} sees {player.curr_room.inventory[name]}.
-    {player.curr_room.inventory['description']}""")
+                print(f"""{name} sees {current_room.inventory}.
+    {current_room.inventory}""")
                 pickup = input('Would you like to pick up an item? y or n: ')
 
                 if pickup.lower() == 'y':
@@ -135,7 +132,7 @@ Go North (n), Go South (s), Go East (e), Go West (w), Action (a) or Quit (q): ''
             print('You cannot pass!!')
 
         elif current_room == player.curr_room:
-            print(f'\nYou are still at the {player.curr_room.name}.\n')
+            print(f'\nYou are currently here...\n')
 
         else:
             player.curr_room = current_room

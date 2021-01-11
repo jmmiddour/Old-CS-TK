@@ -18,3 +18,6 @@ class Room:
 
     def add_item(self, item):
         self.inventory.append(item)
+
+    def __repr__(self):
+        return f'{self.inventory}'
