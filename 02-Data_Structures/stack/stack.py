@@ -3,7 +3,11 @@ import sys
 
 # sys.path.append(os.path.join(os.path.dirname(sys.path[0]),
 #                              'singly_linked_list'))
-sys.path.insert(2, '/singly_linked_list')
+# sys.path.insert(2, '/singly_linked_list')
+
+sys.path.append(os.path.join(os.path.dirname(sys.path[0]), 'singly_linked_list'))
+from singly_linked_list.singly_linked_list import LinkedList
+
 
 """
 A stack is a data structure whose primary purpose is to store and
@@ -17,8 +21,7 @@ return elements in Last In First Out order.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
 """
-
-########## Doing it with List ##########
+# ######### Doing it with List ######### #
 # class Stack:
 #     def __init__(self):
 #         self.size = 0
@@ -47,12 +50,6 @@ return elements in Last In First Out order.
 # from singly_linked_list import LinkedList
 
 
-# import os
-# import sys
-sys.path.append(os.path.join(os.path.dirname(sys.path[0]), 'singly_linked_list'))
-from singly_linked_list import LinkedList
-
-
 class Stack:
     def __init__(self):
         self.size = 0  #
@@ -63,10 +60,10 @@ class Stack:
 
     def push(self, value):
         self.size += 1
-        return self.storage.add_to_head(value)
+        return self.storage.add_to_tail(value)  # Need to add to tail, not head because i
 
     def pop(self):
         if self.size == 0:
             return
         self.size -= 1
-        return self.storage.remove_head()
+        return self.storage.remove_tail()  # Need to remove tail
