@@ -1,14 +1,13 @@
 # A single linked list is kind of shaped like a list, but nothing has an index list
 
+class Node:  # Create the node class
+    def __init__(self, value):  # Instantiates the class with value attribute
+        self.value = value  # Define the attribute value
+        self.next = None  # Create a next attribute with a None value.
 
+    def get_value(self):  # Define a method to get the value
+        return self.value  # Return the vaue
 
-class Node:
-    def __init__(self, value):
-        self.value = value
-        self.next = None
-
-    def get_value(self):
-        return self.value
 
 class LinkedList:
     def __init__(self):
