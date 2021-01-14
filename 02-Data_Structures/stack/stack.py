@@ -60,7 +60,7 @@ class Stack:
 
     def push(self, value):
         self.size += 1
-        return self.storage.add_to_tail(value)  # Need to add to tail, not head because i
+        return self.storage.add_to_tail(value)  # Need to add to tail, not head because if
 
     def pop(self):
         if self.size == 0:
