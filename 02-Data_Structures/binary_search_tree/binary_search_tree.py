@@ -139,6 +139,7 @@ class BSTNode:
     def contains(self, target):
         if self.value == target:  # If node value is the same as target
             return True  #
+
         else:
 
 
@@ -178,7 +179,13 @@ class BSTNode:
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        
+        fn(self.value)
+
+        if self.left:
+            self.left.for_each(fn)
+
+        if self.right:
+            self.right.for_each(fn)
 
     # Part 2 -----------------------
 
@@ -197,7 +204,9 @@ class BSTNode:
     def in_order_print(self):
         if self.left:
             self.left.in_order_print()
-        print(self)
+
+        print(self.value)
+
         if self.right:
             self.right.in_order_print()
 
@@ -222,11 +231,15 @@ class BSTNode:
     def bft_print(self):
         q = Queue()
         q.enqueue(self)
-        while q.size != 0:
-            current = q.dequeue()
-            print(current.value)
+
+        while q.size != 0:  # As long as there is something in the queue
+            current = q.dequeue()  # what we are removing from the queue
+
+            print(current.value)  # print what we removed
+
             if current.left:
                 q.enqueue(current.left)
+
             if current.right:
                 q.enqueue(current.right)
 
@@ -237,9 +250,17 @@ class BSTNode:
     def dft_print(self):
         s = Stack()
         s.push(self)
+
         while s.size != 0:
             current = s.pop()
-            
+
+            print(current.value)
+
+            if current.left:
+                s.push(current.left)
+
+            if current.right:
+                s.push(current.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -258,8 +279,10 @@ class BSTNode:
     def pre_order_dft(self):
         if self:
             print(self.value)
+
             if self.left:
                 self.left.pre_order_dft()
+
             if self.right:
                 self.right.pre_order_dft()
 
@@ -278,8 +301,10 @@ class BSTNode:
         if self:
             if self.left:
                 self.left.post_order_dft()
+
             if self.right:
                 self.right.post_order_dft()
+
             print(self.value)
 
 """
