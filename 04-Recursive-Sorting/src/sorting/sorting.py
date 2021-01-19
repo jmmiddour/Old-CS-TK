@@ -79,11 +79,60 @@ def merge_sort(arr):
 # utilize any extra memory
 # In other words, your implementation should not allocate any additional lists 
 # or data structures; it can only re-use the memory it was given as input
+
+# Morning code taken from https://www.geeksforgeeks.org/in-place-merge-sort/
+# Merges two subarrays of an array
+# First subarray is from the left (start) to the middle of the array
+# Second subarray is from the middle to the right (end) of the array
+# This is the inplace implementation
 def merge_in_place(arr, start, mid, end):
-    # Your code here
-    pass
+    start2 = mid + 1
+
+    # If the direct merge is already sorted
+    if arr[mid] <= arr[start2]:
+        return
+
+    # Need 2 pointers to maintain the start of both arrays to be merged
+    while start <= mid and start2 <= end:
+
+        # If element 1 is in the correct place
+        if arr[start] <= arr[start2]:
+            start += 1
+
+        else:
+            value = arr[start2]
+            index = start2
+
+            # Shift all the elements between element 1 and element 2,
+            #   to the right by 1
+            while index != start:
+                arr[index] = arr[index] - 1
+                index -= 1
+
+            arr[start] = value
+
+            # Update all the pointers
+            start += 1
+            mid += 1
+            start2 += 1
 
 
+# Now going to do the sorting inplace.
+#   "l" is for the left (start) index,
+#   "r" is for the right (end) index
+#   of the sub-array of the array to be sorted.
 def merge_sort_in_place(arr, l, r):
-    # Your code here
-    pass
+    # If the left (start) is less than the right (end)
+    if l < r:
+
+        # Want to do floor divide by 2 to avoid overflow for large l and r
+        m = l + (r - 1) // 2
+
+        # Sort the first half
+        merge_sort_in_place(arr, l, m)
+
+        # Sort the second half
+        merge_sort_in_place(arr, m + 1, r)
+
+        # Merge both sorted halves back together
+        merge_in_place(arr, l, m, r)
