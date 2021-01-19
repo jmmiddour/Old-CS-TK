@@ -1,7 +1,7 @@
 # This might help give a visual of the different sorting methods.
 # https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
 
-# TO-DO: Complete the selection_sort() function below
+# ######### Complete the selection_sort() function below ######### #
 # 1. Start with current index = 0
 # 2. For all indices EXCEPT the last index:
 #    - Loop through elements on the right-hand side of the current index
@@ -18,11 +18,17 @@ def selection_sort(arr):
         cur_index = i                 # TC = O(1), SC = O(1)
         smallest_index = cur_index    # TC = O(1), SC = O(1)
 
+        # Fatima's solution #
         # Find the next smallest element
         #   (hint, can do in 3 loc)
         for j in range(cur_index, len(arr)):  # TC = O(log n)
             if arr[j] < arr[smallest_index]:  # TC = O(1)
                 smallest_index = j            # TC = O(1), SC = O(1)
+
+        # Ava's Solution #
+        # for j in range(i + 1, len(arr)):  # Starts at i + 1 - stops at the end
+        #     if arr[j] < arr[smallest_index]:
+        #         smallest_index = j
 
         # Swap - TC = O(1)
         arr[cur_index], arr[smallest_index] = arr[smallest_index], arr[cur_index]
@@ -40,7 +46,7 @@ def selection_sort(arr):
 # Final SC              = O(1)
 
 
-# TO-DO:  implement the Bubble Sort function below
+# ######### implement the Bubble Sort function below ######### #
 # 1. Loop through your array
 #   - Compare each element to its neighbor
 #   - If elements are in the wrong position (relative to each other, swap them)
@@ -106,32 +112,54 @@ What is the time and space complexity of the counting sort algorithm?
 #
 #     return arr
 
-# Code from https://www.programiz.com/dsa/counting-sort
-def counting_sort(arr):
-    size = len(arr)
-    output = [0] * size
+# # Code from https://www.programiz.com/dsa/counting-sort
+# def counting_sort(arr, maximum=None):
+#     size = len(arr)
+#     output = [0] * size
+#
+#     # Initialize the count array
+#     count = [0] * maximum
+#
+#     # Store the count of each element in the count array
+#     for i in range(0, size):
+#         count[arr[i]] += 1
+#
+#     # Store the cumulative count
+#     for i in range(1, 10):
+#         count[i] += count[i - 1]
+#
+#     # Find the index of each element of the original array in the count array
+#     #   place the elements in the output array
+#     i = size - 1
+#     while i >= 0:
+#         output[count[arr[i]] - 1] = arr[i]
+#         count[arr[i]] -= 1
+#         i -= 1
+#
+#     # Copy the sorted elements into the original array
+#     for i in range(0, size):
+#         arr[i] = output[i]
+#
+#     return arr
 
-    # Initialize the count array
-    count = [0] * 10
+# Ava's Code
+def counting_sort(arr, maximum=None):
+    if maximum is not None:
+        return
 
-    # Store the count of each element in the count array
-    for i in range(0, size):
-        count[arr[i]] += 1
+    output_bucket = [0] * maximum
+    count = [0] * len(arr)
 
-    # Store the cumulative count
-    for i in range(1, 10):
+    for i in arr:
+        count[i] += 1
+
+    for i in range(maximum):
         count[i] += count[i - 1]
 
-    # Find the index of each element of the original array in the count array
-    #   place the elements in the output array
-    i = size - 1
-    while i >= 0:
-        output[count[arr[i]] - 1] = arr[i]
+    for i in range(len(arr)):
+        output_bucket[count[arr[i]] - 1] = arr[i]
         count[arr[i]] -= 1
-        i -= 1
 
-    # Copy the sorted elements into the original array
-    for i in range(0, size):
-        arr[i] = output[i]
+    arr = output_bucket
 
     return arr
