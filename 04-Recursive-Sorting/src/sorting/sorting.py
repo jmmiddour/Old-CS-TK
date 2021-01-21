@@ -18,12 +18,12 @@ def merge(arrA, arrB):
         # If arrA doesn't exist or if index_a has gone beyond the length of arrA
         if index_a > len(arrA) - 1:
             # Set the current spot in merged array to the next value in arrB
-            merged_arr[i] = arr[index_b]
+            merged_arr[i] = arrB[index_b]
             # Increment index_b by one on each iteration
             index_b += 1
 
         # If arrB doesn't exist or if index_b has gone beyond the length of arrB
-        elif index_b > len(arrB) -1:
+        elif index_b > len(arrB) - 1:
             # Set the current spot in merged array to the next value in arrA
             merged_arr[i] = arrA[index_a]
             # Increment index_a by one on each iteration
@@ -81,9 +81,9 @@ def merge_sort(arr):
 # or data structures; it can only re-use the memory it was given as input
 
 # Morning code taken from https://www.geeksforgeeks.org/in-place-merge-sort/
-# Merges two subarrays of an array
-# First subarray is from the left (start) to the middle of the array
-# Second subarray is from the middle to the right (end) of the array
+# Merges two sub-arrays of an array
+# First sub-array is from the left (start) to the middle of the array
+# Second sub-array is from the middle to the right (end) of the array
 # This is the inplace implementation
 def merge_in_place(arr, start, mid, end):
     start2 = mid + 1
@@ -106,7 +106,7 @@ def merge_in_place(arr, start, mid, end):
             # Shift all the elements between element 1 and element 2,
             #   to the right by 1
             while index != start:
-                arr[index] = arr[index] - 1
+                arr[index] = arr[index - 1]
                 index -= 1
 
             arr[start] = value
@@ -126,7 +126,7 @@ def merge_sort_in_place(arr, l, r):
     if l < r:
 
         # Want to do floor divide by 2 to avoid overflow for large l and r
-        m = l + (r - 1) // 2
+        m = (l + (r - 1)) // 2
 
         # Sort the first half
         merge_sort_in_place(arr, l, m)

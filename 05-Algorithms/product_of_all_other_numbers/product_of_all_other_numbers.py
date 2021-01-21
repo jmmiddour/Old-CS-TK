@@ -4,15 +4,61 @@ Returns: a List of integers
 '''
 
 
+# ### Solution from first study group ### #
 # First-pass solution (just make it work!)
+# def product_of_all_other_numbers(arr):
+#     output = [0 for i in range(len(arr) - 1)]  # Creates an empty array
+#
+#     temp = []  # Will hold values that are not the index value
+#
+#     for i in range(len(arr)):
+#         arr_i = i  # Will hold the array index value
+
+
+# ### Livy's Code (2nd Morning Session)... ### #
+# import math
+# # First Pass Solution
+# def product_of_all_other_numbers(arr):
+#     # Create an empty array for single numbers
+#     nums = []
+#     # Create an empty array for products of numbers
+#     products = []
+#
+#     # Iterate through the array to get single number (x)
+#     for x in arr:
+#         # Iterate through array again to get numbers (y)
+#         for y in arr:
+#             # Check if x from the 1st array is equal to y
+#             if x == y:
+#                 # Ignore x
+#                 continue
+#
+#             else:
+#                 # Find the product of all the numbers excluding x
+#                 product = math.prod(nums)  # Math method that returns the product
+#                 # Empty out nums array
+#                 nums = []
+#                 # Append product variable to array
+#                 products.append(product)
+#
+#         return products
+
+# ### Fatima's code (2nd Morning Session)... ### #
 def product_of_all_other_numbers(arr):
-    output = [0 for i in range(len(arr) - 1)]  # Creates an empty array
+    current_index = 0
+    all_products = []
+    product = 1
 
-    temp = []  # Will hold values that are not the index value
-
-    for i in range(len(arr)):
-        arr_i = i  # Will hold the array index value
-
+    for num in arr:
+        for i in range(len(arr)):
+            if current_index == i:
+                pass
+            else:
+                product *= arr[i]
+        all_products.append(product)
+        current_index += 1
+        product = 1
+    return all_products
 
 
 if __name__ == '__main__':

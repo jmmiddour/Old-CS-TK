@@ -1,7 +1,7 @@
 # TO-DO: Implement a recursive implementation of binary search
 def binary_search(arr, target, start, end):
     # If end of array is greater than or equal to, need equal in case target is there
-    if end >= start:
+    if start > end:
         # Get the value in the middle of the array
         middle = (start + end) // 2
 
@@ -31,4 +31,23 @@ def binary_search(arr, target, start, end):
 # You can implement this function either recursively 
 # or iteratively
 def agnostic_binary_search(arr, target):
-    pass
+    if arr[0] < arr[-1]:
+        return binary_search(arr, target, 0, len(arr) - 1)
+
+    else:
+        left = 0
+        right = len(arr) - 1
+
+        while left <= right:
+            mid = left + right // 2
+
+            if arr[mid] == target:
+                return mid
+
+            elif arr[mid] < target:
+                right = mid - 1
+
+            else:
+                left = mid + 1
+
+        return -1
