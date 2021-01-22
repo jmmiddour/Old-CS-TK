@@ -44,21 +44,44 @@ Returns: a List of integers
 #         return products
 
 # ### Fatima's code (2nd Morning Session)... ### #
-def product_of_all_other_numbers(arr):
-    current_index = 0
-    all_products = []
-    product = 1
+# def product_of_all_other_numbers(arr):
+#     current_index = 0
+#     all_products = []
+#     product = 1
+#
+#     for num in arr:
+#         for i in range(len(arr)):
+#             if current_index == i:
+#                 pass
+#             else:
+#                 product *= arr[i]
+#         all_products.append(product)
+#         current_index += 1
+#         product = 1
+#     return all_products
 
-    for num in arr:
-        for i in range(len(arr)):
-            if current_index == i:
-                pass
-            else:
-                product *= arr[i]
-        all_products.append(product)
-        current_index += 1
-        product = 1
-    return all_products
+# ### Ava's Code (2nd Evening Session)... ### #
+# def product_of_all_other_numbers(arr):
+#     product = prod(arr)
+#
+#     product_bucket = [1] * len(arr)
+#
+#     if arr[0] is None:
+#         return None
+
+# ### Doc's code (2nd Evening Session)... ### #
+def product_of_all_other_numbers(arr):
+    products = [0 for _ in range(len(arr))]
+    products_so_far = 1
+
+    for i in range(len(arr)):
+        products[i] = products_so_far
+        products_so_far *= arr[i]
+
+    products_so_far = 1
+
+    for i in range(len(arr) - 1, -1, -1):
+        print(i)
 
 
 if __name__ == '__main__':
