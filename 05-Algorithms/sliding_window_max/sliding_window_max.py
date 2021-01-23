@@ -25,13 +25,61 @@ Returns: a List of integers
 #     # Return max array
 #     return max_arr
 
-from collections import deque
+# from collections import deque
+#
+# def sliding_window_max(nums, k):
+#     max_list = []
+#     dq = deque()
 
+
+# ### My Code (2nd Evening Session)... ### #
+# # First pass solution
+# def sliding_window_max(nums, k):
+#     # nums <-- list of integers
+#     # k <-- single integer (size of the window)
+#     # Create a list to store the largest numbers
+#     max_vals = []
+#
+#     # Iterate through nums k numbers at a time
+#     for i in range(len(nums) - k + 1):
+#         # window = nums([i:i + k])  # Set the window size
+#         # largest = max(window)  # Grab the largest value in current window
+#         # max_vals.append(largest)  # Adds the largest value to the end of max_vals
+#         max_vals.append(max(nums[i:i + k]))  # Chaz's version of above
+#
+#     return max_vals
+
+
+# Second pass solution (Chaz's solution - 2nd Evening Group)
 def sliding_window_max(nums, k):
-    max_list = []
-    dq = deque()
+    # nums <-- list of integers
+    # k <-- single integer (size of the window)
+    # Create a list to store the largest numbers
+    max_vals = [0] * (len(nums) - k + 1)
+
+    # Iterate through nums k numbers at a time
+    for i in range(len(nums) - k + 1):
+        max_vals[i] = max(nums[i:i + k])  # This takes the place of append in 1st pass
+
+    return max_vals
 
 
+# # Second pass solution (Doc's solution - 2nd Evening Group)
+# from collections import deque
+#
+# def sliding_window_max(nums, k):
+#     # nums <-- list of integers
+#     # k <-- single integer (size of the window)
+#     # Create a list to store the largest numbers
+#     maxes = []
+#     # Use deque
+#     dq = deque()
+#     # Instead of range(), use enumerate()
+#     # Use the methods: pop(), append(), and pop_left()
+#     # Use a while loop inside a for loop
+#     # Use pop() inside the while loop
+#
+#     return None  # None is just a placeholder for now
 
 
 if __name__ == '__main__':

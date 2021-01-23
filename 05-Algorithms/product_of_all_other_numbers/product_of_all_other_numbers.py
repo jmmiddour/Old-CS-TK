@@ -1,7 +1,7 @@
-'''
+"""
 Input: a List of integers
 Returns: a List of integers
-'''
+"""
 
 
 # ### Solution from first study group ### #
@@ -43,7 +43,9 @@ Returns: a List of integers
 #
 #         return products
 
+
 # ### Fatima's code (2nd Morning Session)... ### #
+# # 2nd pass solution
 # def product_of_all_other_numbers(arr):
 #     current_index = 0
 #     all_products = []
@@ -60,16 +62,51 @@ Returns: a List of integers
 #         product = 1
 #     return all_products
 
-# ### Ava's Code (2nd Evening Session)... ### #
+
+# ### Theda's Code (2nd Evening Session)... ### #
+# # First pass solution
 # def product_of_all_other_numbers(arr):
-#     product = prod(arr)
+#     # Multiply all numbers except the current value
+#     product_bucket = [0] * len(arr)  # holds all products
+#     current_val = 1  # will hold the current value
 #
-#     product_bucket = [1] * len(arr)
-#
+#     # Check to make sure arr is not empty
 #     if arr[0] is None:
 #         return None
+#
+#     for i in range(len(arr)):  # Track where we are in the product bucket
+#         for j in range(len(arr)):  # Track where we are in the arr
+#             if i != j:  # If i does not equal j
+#                 current_val *= arr[j]  # Multiply all values (not at arr index)
+#                 #                          make that the new current value
+#         # Assign the new current value to the product bucket for that index
+#         product_bucket[i] = current_val
+#         # Reset the current value to 1
+#         current_val = 1
+#
+#     # Return all the products
+#     return product_bucket
+
+
+# ### Ava's Code (2nd Evening Session)... ### #
+from math import prod
+# # 2nd pass solution
+# def product_of_all_other_numbers(arr):
+#     product = prod(arr)  # holds the product of the arr at index
+#     product_bucket = [1] * len(arr)  # holds all the products
+#
+#     if arr[0] is None:  # Checks to make sure not an empty arr
+#         return None
+#
+#     for i in range(len(arr)):  # Iterate through the length of arr
+#         # Assigns the product / arr index value to the product bucket
+#         product_bucket[i] = product[i] / arr[i]
+#
+#     return product_bucket
+
 
 # ### Doc's code (2nd Evening Session)... ### #
+# 2nd pass solution
 def product_of_all_other_numbers(arr):
     products = [0 for _ in range(len(arr))]
     products_so_far = 1
@@ -80,8 +117,13 @@ def product_of_all_other_numbers(arr):
 
     products_so_far = 1
 
+    # Start at end, stop at -1, step -1
+    #   ^-- This will move backwards through the list
     for i in range(len(arr) - 1, -1, -1):
-        print(i)
+        products[i] *= products_so_far
+        product_so_far *= arr[i]
+
+    return products
 
 
 if __name__ == '__main__':

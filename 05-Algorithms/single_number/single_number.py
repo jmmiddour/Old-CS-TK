@@ -51,26 +51,31 @@ Returns: an integer
 #             return key
 # # ^-- Time Complexity = O(n^2)
 
+
 # # Second pass solution
 # def single_number(arr):
-#     dic = {}
-#     # arr_list = []
+#     dic = {}  # Create an empty dictionary
 #
-#     for num in arr:
+#     for num in arr:  # For each number in the array
+#         # The get method for dictionaries returns the value of the specified key,
+#         #   if nothing is in the value position it returns None
+#         #   and will then trigger the else statement.
 #         if dic.get(num):
-#             del dic[num]
-#         else:
-#             dic[num] = 1
+#             del dic[num]  # If num is already in the dictionary we are deleting it.
 #
-#     return next(iter(dic.keys()))  # dic.keys()
+#         else:
+#             dic[num] = 1  # If not already in dictionary, going to make value 1, indicating it appears once
+#
+#     # Need to look this up to see how it works
+#     return next(iter(dic.keys()))  # could also use --> dic.keys()
 
 
-# Doc's SUPER solution
+# ### Doc's SUPER solution ### #
 def single_number(arr):
-    ans = 0
+    ans = 0  # Initialize ans at 0
     for x in arr:
-        ans ^= x  # Bitwise operator
-
+        ans ^= x  # Bitwise operator XOR
+#                   Will return either ans or x exclusively
     return ans
 
 

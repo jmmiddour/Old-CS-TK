@@ -14,25 +14,50 @@ Returns: a List of integers
 
 
 # ### Joseph's code (2nd Evening Group) ### #
-# First Pass Solution
+# # First Pass Solution
+# def moving_zeroes(arr):
+#     # Find the non-zero integer in given list of integers
+#     for num in arr:
+#         if num != 0:  # If the num is not a 0
+#             # Move each non-zero integer to the
+#             #   LEFT side of the array
+#             # Just continue here, don't need to move anything
+#             continue
+#
+#         else:  # num will be a 0
+#             # Move each zero integer to the
+#             #   RIGHT side of the array
+#             arr.append(num)  # Adds the num to the end
+#             arr.remove(num)  # Removes the num from current index
+#                 # Remove is a for loop under the hood:
+#                 # for i in arr:
+#                 #    if i == num:
+#                 #        del arr[i]
+#     # Return the sorted list of integers
+#     return arr
+
+
+# # 2nd pass solution
+# def moving_zeroes(arr):
+#     # bucket = [0] * len(arr)  # One way to create a bucket
+#     bucket = [0 for _ in arr]  # Another way to create a bucket
+#     counter = 0  # Create a counter
+#
+#     for num in arr:  # for each num in arr
+#         if num != 0:  # if the num is not 0
+#             bucket[counter] = num  # moves the non-zero int left
+#             counter += 1  # Increment the counter for next iteration
+#
+#     return bucket
+
+
+# Chaz's 2nd pass solution
 def moving_zeroes(arr):
-    # Find the non-zero integer
-    if num != 0:
-    # Move each non-zero integer to the LEFT side of the array
-    # Move each zero integer to the RIGHT side of the array
-    # Return the sorted list of integers
-
-# 2nd pass solution
-def moving_zeroes(arr):
-    # bucket = [0] * len(arr)  # One way to create a bucket
-    bucket = [0 for _ in arr]  # Another way to create a bucket
-    counter = 0
-
-    for num in arr:
-        if num != 0:
-            bucket[counter] = num
-            counter += 1
-
+    # Create a bucket that holds all non-zero integers
+    bucket = [num for num in arr if num != 0]
+    # Add 0's to the end of the bucket for the remaining length of the array
+    bucket += [0] * (len(arr) - len(bucket))
+    # Return the bucket with the sorted integers
     return bucket
 
 
