@@ -12,6 +12,10 @@ class HashTableEntry:
 MIN_CAPACITY = 8
 
 
+# The hashing function does the hashing. You input a string, it outputs a number.
+# A hash table using the hash function to take the key of a key value pair and
+#   hashes it into an index.
+
 class HashTable:
     """
     A hash table that with `capacity` buckets
@@ -21,9 +25,9 @@ class HashTable:
     """
 
     def __init__(self, capacity):
-        self.capacity = capacity
-        self.storage = [None] * capacity
-        self.items = 0
+        self.capacity = capacity  # Potential size of the hash table
+        self.storage = [None] * capacity  # Creates the storage buckets
+        self.items = 0  # We will start at 0 and count them as we add them
 
 
     def get_num_slots(self):
@@ -114,8 +118,8 @@ class HashTable:
         Take an arbitrary key and return a valid integer index
         between within the storage capacity of the hash table.
         """
-        #return self.fnv1(key) % self.capacity
-        return self.djb2(key) % self.capacity
+        return self.fnv1(key) % self.capacity
+        # return self.djb2(key) % self.capacity
 
 
     def put(self, key, value):
@@ -159,7 +163,7 @@ class HashTable:
 
         # Ava's code
         index = self.hash_index(key)
-        new_entry = HashTableEntry(key, value)
+        new_entry = HashTableEntry(key, value)  # Creates a new node
 
         if self.storage[index] is not None:
             if self.storage[index].key == key
@@ -198,36 +202,36 @@ class HashTable:
         Implement this.
         """
 
-        # Ava's code
-        index = self.hash_index(key)
-
-        if self.storage[index] is None:
-            return None
-
-        elif self.storage[index].key == key:
-            self.items -= 1
-
-            if self.storage[index].next is not None:
-                self.storage[index] = self.storage[index].next
-
-            else:
-                self.storage[index] = None
-
-        else:
-            prev = self.storage[index]
-            current = self.storage[index].next
-
-            while current is not None:
-
-                if current.key == key:
-                    prev.next = current.next
-                    self.items -= 1
-
-                else:
-                    prev = current
-                    current = current.next
-
-        return 'Success!'
+        # # Ava's code (1st Evening Session
+        # index = self.hash_index(key)
+        #
+        # if self.storage[index] is None:
+        #     return None
+        #
+        # elif self.storage[index].key == key:
+        #     self.items -= 1
+        #
+        #     if self.storage[index].next is not None:
+        #         self.storage[index] = self.storage[index].next
+        #
+        #     else:
+        #         self.storage[index] = None
+        #
+        # else:
+        #     prev = self.storage[index]
+        #     current = self.storage[index].next
+        #
+        #     while current is not None:
+        #
+        #         if current.key == key:
+        #             prev.next = current.next
+        #             self.items -= 1
+        #
+        #         else:
+        #             prev = current
+        #             current = current.next
+        #
+        # return 'Success!'
 
 
     def get(self, key):
