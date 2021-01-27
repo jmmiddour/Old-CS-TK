@@ -37,6 +37,6 @@ with open('ciphertext.txt', 'r') as file_output:
         index = ordered_freq.index(letter)
         new_letter = most_freq[index]
 
-        story = story + new_letter
+        story += new_letter
 
     print(story)

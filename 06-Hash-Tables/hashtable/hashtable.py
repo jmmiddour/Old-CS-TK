@@ -94,8 +94,9 @@ class HashTable:
 
         hash=FNV_offset
         for char in key:
-            hash = hash * FNV_prime
-            hash =  hash ^ ord(char)
+            hash *= FNV_prime
+            hash ^= ord(char)  # Bitwise XOR
+
         return hash
 
 
@@ -107,10 +108,12 @@ class HashTable:
         """
 
         # Ava's Code
-        hash = 5381
+        hash_prime = 5381
+
         for byte in key:
-            hash = (hash * 33) + ord(byte)
-        return hash
+            hash_prime = (hash_prime * 33) + ord(byte)
+
+        return hash_prime
 
 
     def hash_index(self, key):
@@ -118,8 +121,8 @@ class HashTable:
         Take an arbitrary key and return a valid integer index
         between within the storage capacity of the hash table.
         """
-        return self.fnv1(key) % self.capacity
-        # return self.djb2(key) % self.capacity
+        # return self.fnv1(key) % self.capacity
+        return self.djb2(key) % self.capacity
 
 
     def put(self, key, value):
