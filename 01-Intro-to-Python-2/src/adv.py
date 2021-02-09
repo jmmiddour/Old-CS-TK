@@ -1,7 +1,8 @@
 from room import Room
 from player import Player
-import random
 from item import Item
+import random
+
 
 # Declare all items
 inventory = {
@@ -20,6 +21,7 @@ inventory = {
     'map': Item('Map', 'Will help you make your way through the cave.')
 }
 
+
 # Declare all the rooms
 room = {
     'outside': Room('Outside Cave Entrance', 'North of you, the cave mount beckons',
@@ -37,6 +39,7 @@ room = {
             \nThe only exit is to the south.', inventory[random.choice(list(inventory.keys()))])
 }
 
+
 # Link rooms together (like a map)
 room['outside'].n_to = room['foyer']
 room['foyer'].s_to = room['outside']
@@ -50,7 +53,7 @@ room['treasure'].s_to = room['narrow']
 # #################### Main ###################### #
 
 # Make a new player object that is currently in the 'outside' room.
-player_name = input('What is your name? ')
+player_name = input('What is your name? ').title()
 player = Player(player_name, room['outside'])
 
 

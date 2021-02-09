@@ -105,14 +105,13 @@ Go North (n), Go South (s), Go East (e), Go West (w), Action (a) or Quit (q): ''
             look_drop = input('\nWhat would you like to do?\n  look around (l) or drop an item (d): ')
 
             if look_drop.lower() == 'l':
-                print(f"""{name} sees {current_room.inventory}.
-    {current_room.inventory}""")
+                print(f"""{name} sees {player.curr_room.inventory}""")
                 pickup = input('Would you like to pick up an item? y or n: ')
 
                 if pickup.lower() == 'y':
-                    item_pu = input('Which item would you like? type the number: ')
-                    current_room.remove_item(item_pu)
-                    player.add_item(item_pu)
+                    item_pu = int(input('Which item would you like? type the number: '))
+                    player.add_item(current_room.inventory[item_pu - 1])
+                    current_room.remove_item(item_pu - 1)
                     # player.add_item(current_room.remove_item(item_pu - 1))
 
                 elif pickup.lower() == 'n':

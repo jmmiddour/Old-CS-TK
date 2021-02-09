@@ -3,6 +3,8 @@
 
 class Room:
     def __init__(self, name, description, inventory=None):
+        if inventory is None:
+            inventory = []
         self.name = name
         self.description = description
         self.n_to = None
@@ -15,7 +17,7 @@ class Room:
         return f'{self.inventory}'
 
     def remove_item(self, item):
-        self.inventory.remove(item)
+        self.inventory.pop(item)
 
     def add_item(self, item):
         self.inventory.append(item)

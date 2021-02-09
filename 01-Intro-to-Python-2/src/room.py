@@ -5,7 +5,7 @@ from item import Item
 
 
 class Room:
-    def __init__(self, name, description, inventory = []):
+    def __init__(self, name, description, inventory=None):
         self.name = name
         self.description = description
         self.inventory = inventory
@@ -14,11 +14,11 @@ class Room:
         self.e_to = None
         self.w_to = None
 
-    def __repr__(self):
-        return f'{self.inventory}'
+    def remove_item(self, item):
+        self.inventory.pop(item)
 
     def add_item(self, item):
-        self.inventory.append(item.name)
+        self.inventory.append(item)
 
-    def remove_item(self, item):
-        self.inventory.remove(item)
+    def __repr__(self):
+        return f'{self.inventory}'
