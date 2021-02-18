@@ -356,12 +356,16 @@ class DoublyLinkedList:
     def move_to_end(self, node):
         if self.length == 0:
             return
+
         if self.tail is node:
             return
+
         if self.head is not node:
             node.prev.next = node.next
+
         else:
             self.head = node.next
+
         node.next.prev = node.prev
         self.tail.next = node
         node.prev = self.tail

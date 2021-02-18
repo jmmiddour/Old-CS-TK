@@ -51,14 +51,34 @@ Returns: a List of integers
 #     return bucket
 
 
-# Chaz's 2nd pass solution
-def moving_zeroes(arr):
-    # Create a bucket that holds all non-zero integers
-    bucket = [num for num in arr if num != 0]
-    # Add 0's to the end of the bucket for the remaining length of the array
-    bucket += [0] * (len(arr) - len(bucket))
-    # Return the bucket with the sorted integers
-    return bucket
+# # Chaz's 2nd pass solution
+# def moving_zeroes(arr):
+#     # Create a bucket that holds all non-zero integers
+#     bucket = [num for num in arr if num != 0]
+#     # Add 0's to the end of the bucket for the remaining length of the array
+#     bucket += [0] * (len(arr) - len(bucket))
+#     # Return the bucket with the sorted integers
+#     return bucket
+
+# Fatima's 1st pass (Feb 2021 session):
+def moving_zeros:
+    left = 0
+    right = len(arr) - 1
+
+    while left <= right:
+        if arr[left] == 0 and arr[right] != 0:
+            arr[left], arr[right] = arr[right], arr[left]
+            left += 1
+            right += 1
+
+        else:
+            if arr[left] != 0:
+                left += 1
+
+            if arr[right] == 0:
+                right -= 1
+
+    return arr
 
 
 if __name__ == '__main__':
