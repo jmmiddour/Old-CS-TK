@@ -1,10 +1,11 @@
 import random
-from util import Stack
+from CS07_Graphs.projects.graph.util import Stack
 
 
 class User:
     def __init__(self, name):
         self.name = name
+
 
 class SocialGraph:
     def __init__(self):
