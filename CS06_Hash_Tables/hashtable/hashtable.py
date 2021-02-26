@@ -72,7 +72,7 @@ class HashTable:
             factor, no rehash operations will ever occur.
 
         """
-        return (self.items / self.capacity)
+        return self.items / self.capacity
 
 
 
@@ -169,23 +169,23 @@ class HashTable:
         new_entry = HashTableEntry(key, value)  # Creates a new node
 
         if self.storage[index] is not None:
-            if self.storage[index].key == key
+            if self.storage[index].key == key:
                 self.storage[index].value = value
 
             else:
                 current = self.storage[index]
 
-            while current.next is not None:
-                if current.key == key:
-                    current.value = value
+                while current.next is not None:
+                    if current.key == key:
+                        current.value = value
 
-                current = current.next
+                    current = current.next
 
-                if current.key == key:
-                    current.value = value
+                    if current.key == key:
+                        current.value = value
 
-                else:
-                    current.next = new_entry
+                    else:
+                        current.next = new_entry
 
         else:
             self.storage[index] = new_entry
@@ -193,7 +193,7 @@ class HashTable:
         self.items += 1
 
         if self.get_load_factor() >= 7:
-            self.resize((self.capacity * 2))
+            self.resize(self.capacity * 2)
 
 
     def delete(self, key):
@@ -205,36 +205,36 @@ class HashTable:
         Implement this.
         """
 
-        # # Ava's code (1st Evening Session
-        # index = self.hash_index(key)
-        #
-        # if self.storage[index] is None:
-        #     return None
-        #
-        # elif self.storage[index].key == key:
-        #     self.items -= 1
-        #
-        #     if self.storage[index].next is not None:
-        #         self.storage[index] = self.storage[index].next
-        #
-        #     else:
-        #         self.storage[index] = None
-        #
-        # else:
-        #     prev = self.storage[index]
-        #     current = self.storage[index].next
-        #
-        #     while current is not None:
-        #
-        #         if current.key == key:
-        #             prev.next = current.next
-        #             self.items -= 1
-        #
-        #         else:
-        #             prev = current
-        #             current = current.next
-        #
-        # return 'Success!'
+        # Ava's code (1st Evening Session
+        index = self.hash_index(key)
+
+        if self.storage[index] is None:
+            return None
+
+        elif self.storage[index].key == key:
+            self.items -= 1
+
+            if self.storage[index].next is not None:
+                self.storage[index] = self.storage[index].next
+
+            else:
+                self.storage[index] = None
+
+        else:
+            prev = self.storage[index]
+            current = self.storage[index].next
+
+            while current is not None:
+
+                if current.key == key:
+                    prev.next = current.next
+                    self.items -= 1
+
+                else:
+                    prev = current
+                    current = current.next
+
+        return 'Success!'
 
 
     def get(self, key):
