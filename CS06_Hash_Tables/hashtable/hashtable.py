@@ -195,6 +195,11 @@ class HashTable:
         if self.get_load_factor() >= 7:
             self.resize(self.capacity * 2)
 
+        # # Ava's No Collision Handler
+        # idx = self.hash_index(key)
+        # self.storage[idx] = HashTableEntry(key, value)
+
+
 
     def delete(self, key):
         """
@@ -205,7 +210,7 @@ class HashTable:
         Implement this.
         """
 
-        # Ava's code (1st Evening Session
+        # Ava's code (1st Evening Session)
         index = self.hash_index(key)
 
         if self.storage[index] is None:
