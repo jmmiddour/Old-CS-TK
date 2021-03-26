@@ -1,10 +1,14 @@
 import random
-from CS07_Graphs.projects.graph.util import Stack
+# from CS07_Graphs.projects.graph.util import Stack
+from collections import deque
 
 
 class User:
     def __init__(self, name):
         self.name = name
+
+    def __repr__(self):
+        return f'User({self.name})'
 
 
 class SocialGraph:
@@ -50,13 +54,15 @@ class SocialGraph:
         # !!!! IMPLEMENT ME
 
         # Add users
+        # ### Ava's Code ### #
         for i in range(num_users):
-            self.add_user(f"user{i}")
+            self.add_user(f"Test User: {i}")
 
         # Create friendships
+        # ### Ava's Code ### #
         friendships = []
-        for user_id in self.users:
-            for friend_id in range(user_id + 1, self.last_id +1):
+        for user_id in self.users:  # For every user id
+            for friend_id in range(user_id + 1, self.last_id + 1):
                 friendships.append((user_id, friend_id))
 
         random.shuffle(friendships)
@@ -77,24 +83,66 @@ class SocialGraph:
         """
         visited = {}  # Note that this is a dictionary, not a set
         # !!!! IMPLEMENT ME
-        s = Stack()
 
-        def get_neighbors(id):
-            return self.friendships[id]
+        # ### Ava's Code ### #
+        # s = Stack()
+        #
+        # def get_neighbors(id):
+        #     return self.friendships[id]
+        #
+        # s.push(user_id)
+        #
+        # while s.size() > 0:
+        #     user = s.pop()
+        #
+        #     if user not in visited:
+        #         visited[user] = []
+        #
+        #         for neighbor in get_neighbors(user):
+        #             s.push(neighbor)
+        #             visited[user].append(neighbor)
+        #
+        # return visited
 
-        s.push(user_id)
+        # ### Chaz's Code ### #
+        # Use DFS to find connections
+        stack = deque()
 
-        while s.size() > 0:
-            user = s.pop()
+        # Start at user, go outward
+        stack.append(user_id)
 
-            if user not in visited:
-                visited[user] = []
+        while stacK:
+            friend = stack.pop()
 
-                for neighbor in get_neighbors(user):
-                    s.push(neighbor)
-                    visited[user].append(neighbor)
+            if friend not in visited:
+                visited[friend] = None
 
-        return visited
+                for next_friend in self.friendships[friend]:
+                    stack.append(next_friend)
+
+
+        def shortest_path(start, end):
+            q = deque()
+            q.append([start])
+            visited = set()
+
+            while q:
+                path = q.popleft()
+                friend = path[-1]
+
+                if friend not in visited:
+                    if friend == end:
+                        return path
+
+                visited.add(friend)
+
+                for next friend in self.friendships[friend]:
+                    new_path = path.copy()
+                    new_path.append(next_friend)
+                    q.append(new_path)
+
+        friend_paths = {friend_id:shortest_path(user_id, friend_id) for
+                        friend_id in friend_paths}
 
 
 if __name__ == '__main__':
