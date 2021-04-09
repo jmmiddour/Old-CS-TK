@@ -129,7 +129,8 @@ class BSTNode:
 
         else:  # If given value is > node value
             if self.right:  # Check if there is a node on the right.
-                self.right = insert(value)  # If NO node value on right, insert given value.
+                self.right.insert(value)  # If NO node value on right,
+                # insert given value.
             else:  # If there is a value in the right node.
                 self.right = BSTNode(value)  # Insert the node value in the right node.
 
@@ -140,7 +141,15 @@ class BSTNode:
         if self.value == target:  # If node value is the same as target
             return True  #
 
-        else:
+        elif self.value > target:
+            if self.left:
+                return self.left.contains(target)
+
+        elif self.value < target:
+            if self.right:
+                return self.right.contains(target)
+
+        return False
 
 
     # Return the maximum value found in the tree
@@ -155,25 +164,26 @@ class BSTNode:
         # The stuff above will not work if we use recursion
 
         # Recursion method
-        # # Starting at the first value
-        # max_value = self.value
-        # # If the value is not None / If 
+        # Starting at the first value
+        max_value = self.value
+        # If the value is not None / If
 
-        # current_node = self
-        # if current_node is None:
-        #     return None
-        #
-        # while current_node.right:
-        #     current_node = current_node.right
-        #
-        # max_value = current_node.value
-        # return max_value
+        current_node = self
+        if current_node is None:
+            return None
+
+        while current_node.right:
+            current_node = current_node.right
+
+        max_value = current_node.value
+        return max_value
 
         # Evening session
-        while self.right:  # As long as there is a value in the right node
-            self.right.get_max()  # Recusion: repeat the while loop.
-
-        return self.value  # Exit code.
+        #
+        # while self.right:  # As long as there is a value in the right node
+        #     self.right.get_max()  # Recusion: repeat the while loop.
+        #
+        # return self.value  # Exit code.
 
 
 
@@ -327,6 +337,6 @@ print("elegant methods")
 print("pre order")
 bst.pre_order_dft()
 print("in order")
-bst.in_order_dft()
+# bst.in_order_dft()
 print("post order")
 bst.post_order_dft()  
