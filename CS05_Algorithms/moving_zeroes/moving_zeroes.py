@@ -61,7 +61,7 @@ Returns: a List of integers
 #     return bucket
 
 # Fatima's 1st pass (Feb 2021 session):
-def moving_zeros:
+def moving_zeroes(arr):
     left = 0
     right = len(arr) - 1
 
