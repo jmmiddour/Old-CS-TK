@@ -6,7 +6,7 @@ class Node:  # Create the node class
         self.next = None  # Create a next attribute with a None value.
 
     def get_value(self):  # Define a method to get the value
-        return self.value  # Return the vaue
+        return self.value  # Return the value
 
 
 class LinkedList:

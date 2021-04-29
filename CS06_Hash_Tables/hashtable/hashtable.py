@@ -25,7 +25,9 @@ class HashTable:
     """
 
     def __init__(self, capacity):
-        self.capacity = capacity  # Potential size of the hash table
+        # self.capacity = capacity  # Potential size of the hash table
+        self.capacity = max(capacity, MIN_CAPACITY)  # Another way, makes it
+        # so that the user can not set the capacity less than the min set above
         self.storage = [None] * capacity  # Creates the storage buckets
         self.items = 0  # We will start at 0 and count them as we add them
 
